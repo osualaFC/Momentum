@@ -24,7 +24,7 @@ interface Moment2mDao {
 
     @Transaction
     @Query("SELECT * FROM habit wHERE id =:id")
-    fun getHabitWithTasksById(id: Long): Flow<HabitWithTasks>
+    fun getHabitById(id: Long): Flow<Habit>
 
     @Update
     suspend fun updateHabit(habit : Habit)

@@ -11,5 +11,7 @@ data class Habit(
     var frequency: List<String>,
     var creationDate: String,
     var score: Int,
-    var cancelled: Boolean
+    var cancelled: Boolean,
+    var completed: Int,
+    var missed : Int
 )
