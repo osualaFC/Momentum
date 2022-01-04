@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Momentum</string>
+    <string name="generic_error_message">This data could not be found</string>
 </resources>

@@ -9,7 +9,7 @@ import com.fredosuala.momentum.data.entity.Task
 
 @Database(entities = [Habit::class, Task::class], version = 1)
 @TypeConverters(Converter::class)
-abstract class Moment2mDatabase(): RoomDatabase() {
+abstract class Moment2mDatabase: RoomDatabase() {
     companion object{
         const val DATABASE_NAME = "moment2m"
     }

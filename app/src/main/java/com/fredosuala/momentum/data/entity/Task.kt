@@ -19,8 +19,6 @@ data class Task(
         val id: Long = 0,
         val habitId: Long,
         var status: Status,
-
-
         )
 
 enum class Status {
