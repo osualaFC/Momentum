@@ -3,6 +3,8 @@ package com.fredosuala.momentum.domain.repository
 import com.fredosuala.momentum.data.entity.Habit
 import com.fredosuala.momentum.data.entity.HabitWithTasks
 import com.fredosuala.momentum.data.entity.Task
+import com.fredosuala.momentum.domain.model.TaskDomain
+import com.fredosuala.momentum.domain.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
@@ -20,5 +22,9 @@ interface Repository {
      fun getAllHabitWithTask() : Flow<List<HabitWithTasks>>
 
      fun getHabit(id: Long) : Flow<Habit>
+
+     suspend fun getAllHabits() : List<Habit>
+
+     fun getTodayTask() : Flow<Resource<List<TaskDomain>>>
 
 }

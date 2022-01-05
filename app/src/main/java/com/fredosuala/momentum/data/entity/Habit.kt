@@ -11,10 +11,10 @@ data class Habit(
     var name: String,
     var frequency: List<String>,
     var creationDate: String,
-    var score: Int,
-    var cancelled: Boolean,
-    var completed: Int,
-    var missed : Int
+    var score: Int = 0,
+    var cancelled: Boolean = false,
+    var completed: Int = 0,
+    var missed : Int = 0
 ) {
     fun toDomain() : HabitDomain {
         return HabitDomain(

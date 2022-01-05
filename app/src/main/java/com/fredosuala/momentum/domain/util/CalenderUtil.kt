@@ -22,9 +22,9 @@ object CalenderUtil {
         return dateTimeFormatter.print(dateTime)
     }
 
-    fun getCurrentWeekDayText(context: Context) : String {
+    fun getCurrentWeekDayText() : String {
         val dayOfWeek = today() - 1
-        val weekDaysArray = context.resources.getStringArray(R.array.WeekDays)
+        val weekDaysArray = arrayOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
         return weekDaysArray[dayOfWeek]
     }
 

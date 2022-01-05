@@ -42,12 +42,12 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUseCases(repository: Repository, app: Application) : UseCases {
+    fun provideUseCases(repository: Repository) : UseCases {
         return UseCases(
             clearTable = ClearTable(repository),
             createHabit = CreateHabit(repository),
             deleteHabit = DeleteHabit(repository),
-            generateTodayTasks = GenerateTodayTasks(repository, app),
+            generateTodayTasks = GenerateTodayTasks(repository),
             getHabit = GetHabit(repository),
             updateHabit = UpdateHabit(repository)
         )

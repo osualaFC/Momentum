@@ -16,7 +16,7 @@ interface Moment2mDao {
     suspend fun addTask(task : Task)
 
     @Query("SELECT * FROM habit")
-    fun getAllHabit() : Flow<List<Habit>>
+    suspend fun getAllHabit() : List<Habit>
 
     @Transaction
     @Query("SELECT * FROM habit")

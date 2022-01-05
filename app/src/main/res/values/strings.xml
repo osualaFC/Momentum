@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Momentum</string>
     <string name="generic_error_message">This data could not be found</string>
+    <string name="home_page">WE FIRST MAKE OUR HABIT,\nAND THEN OUR HABITS\nMAKE US</string>
+    <string name="anonymous">-Anonymous</string>
+    <string name="action_header">Today\'s Actions</string>
+    <string name="empty">Take a first step today\nby clicking the (+) button</string>
 </resources>
