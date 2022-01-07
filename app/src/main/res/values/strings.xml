@@ -5,4 +5,17 @@
     <string name="anonymous">-Anonymous</string>
     <string name="action_header">Today\'s Actions</string>
     <string name="empty">Take a first step today\nby clicking the (+) button</string>
+    <string name="new_habit">Setup A New\nHabit</string>
+    <string name="enter_habit_name">Enter habit name</string>
+    <string name="frequency">Habit Frequency</string>
+    <string name="everyday">Everyday</string>
+    <string name="mon">Mon</string>
+    <string name="tues">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thurs">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="sun">Sun</string>
+    <string name="reminder">Reminder</string>
+    <string name="notification">Notification</string>
 </resources>

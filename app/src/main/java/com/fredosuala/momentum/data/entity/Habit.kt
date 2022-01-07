@@ -10,11 +10,13 @@ data class Habit(
     val id: Long = 0,
     var name: String,
     var frequency: List<String>,
-    var creationDate: String,
+    var reminder : String,
+    var icon : Int,
     var score: Int = 0,
     var cancelled: Boolean = false,
     var completed: Int = 0,
-    var missed : Int = 0
+    var missed : Int = 0,
+    var creationDate: Long = System.currentTimeMillis()
 ) {
     fun toDomain() : HabitDomain {
         return HabitDomain(
@@ -25,7 +27,9 @@ data class Habit(
             score = score,
             cancelled = cancelled,
             completed = completed,
-            missed = missed
+            missed = missed,
+            reminder = reminder,
+            icon = icon
         )
     }
 }

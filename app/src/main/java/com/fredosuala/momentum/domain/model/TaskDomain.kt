@@ -7,6 +7,7 @@ data class TaskDomain(
     val habitId : Long,
     var name: String,
     var status: Status,
+    var icon: Int,
     val currentTimestamp: Long = System.currentTimeMillis()
 ) {
     fun toEntity() : Task {

@@ -36,11 +36,10 @@ class HomeViewModel@Inject constructor(
     private val _eventFlow = MutableSharedFlow<HomeEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    private val todayTasksExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        _state.value = state.value.copy(isLoading = false, isEmpty = true)
-    }
+
 
     init{
+        Log.i("TAG", "init: ")
         getAllHabits()
     }
 

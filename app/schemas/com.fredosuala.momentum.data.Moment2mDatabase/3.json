@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "c5c7fde69dd95dc6d2772d0e60e5beb4",
+    "version": 3,
+    "identityHash": "8c0566facbebe2f929df82bfd4a3787c",
     "entities": [
       {
         "tableName": "habit",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `frequency` TEXT NOT NULL, `score` INTEGER NOT NULL, `cancelled` INTEGER NOT NULL, `completed` INTEGER NOT NULL, `missed` INTEGER NOT NULL, `creationDate` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `frequency` TEXT NOT NULL, `reminder` TEXT NOT NULL, `icon` INTEGER NOT NULL, `score` INTEGER NOT NULL, `cancelled` INTEGER NOT NULL, `completed` INTEGER NOT NULL, `missed` INTEGER NOT NULL, `creationDate` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -24,6 +24,18 @@
             "fieldPath": "frequency",
             "columnName": "frequency",
             "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reminder",
+            "columnName": "reminder",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "icon",
+            "columnName": "icon",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -114,7 +126,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c5c7fde69dd95dc6d2772d0e60e5beb4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8c0566facbebe2f929df82bfd4a3787c')"
     ]
   }
 }

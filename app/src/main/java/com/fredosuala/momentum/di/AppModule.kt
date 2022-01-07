@@ -31,6 +31,7 @@ object AppModule {
             Moment2mDatabase.DATABASE_NAME
             )
             .addTypeConverter(Converter())
+            .fallbackToDestructiveMigration()
             .build()
     }
 
