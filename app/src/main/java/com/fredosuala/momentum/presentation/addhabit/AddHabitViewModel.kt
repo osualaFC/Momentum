@@ -62,7 +62,8 @@ class AddHabitViewModel @Inject constructor(
     }
 
     fun addHabit() {
-        val habit = Habit(id = 0, name =_habitName.value, frequency = freq.value, reminder = _reminder.value, icon = icon, cancelled = !_notification.value)
+        val habit = Habit(id = 0, name =_habitName.value, frequency = freq.value,
+            reminder = _reminder.value, icon = icon, cancelled = !_notification.value)
         viewModelScope.launch {
             try {
                 if (!isNameValid(habitName.value)) {

@@ -10,11 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
-import com.fredosuala.momentum.data.entity.Habit
-import com.fredosuala.momentum.domain.model.TaskDomain
 import com.fredosuala.momentum.presentation.home.TaskState
 
 @Composable
@@ -60,6 +57,9 @@ fun HomeDetails(state : TaskState) {
                 LazyColumn {
                     items(state.tasks) { task ->
                         HabitItem(task)
+                        Spacer(modifier = Modifier
+                            .height(10.dp)
+                            .fillMaxWidth())
                     }
                 }
 

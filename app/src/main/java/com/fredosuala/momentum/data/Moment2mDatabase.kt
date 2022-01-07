@@ -7,7 +7,7 @@ import com.fredosuala.momentum.data.dao.Moment2mDao
 import com.fredosuala.momentum.data.entity.Habit
 import com.fredosuala.momentum.data.entity.Task
 
-@Database(entities = [Habit::class, Task::class], version = 3)
+@Database(entities = [Habit::class, Task::class], version = 4)
 @TypeConverters(Converter::class)
 abstract class Moment2mDatabase: RoomDatabase() {
     companion object{

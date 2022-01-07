@@ -1,27 +1,13 @@
 package com.fredosuala.momentum.presentation.home
 
-import android.app.Application
-import android.content.Context
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredosuala.momentum.data.entity.Habit
-import com.fredosuala.momentum.data.entity.Status
-import com.fredosuala.momentum.domain.model.TaskDomain
 import com.fredosuala.momentum.domain.usecases.UseCases
-import com.fredosuala.momentum.domain.util.CalenderUtil
 import com.fredosuala.momentum.domain.util.Resource
-import com.fredosuala.momentum.presentation.home.components.HomeEvent
-import com.fredosuala.momentum.presentation.util.ResourceUtil
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,20 +16,11 @@ class HomeViewModel@Inject constructor(
     private val useCases: UseCases
 ) : ViewModel() {
 
-    private val _state = mutableStateOf<TaskState>(TaskState())
+    private val _state = mutableStateOf(TaskState())
     val state : State<TaskState> = _state
 
-    private val _eventFlow = MutableSharedFlow<HomeEvent>()
-    val eventFlow = _eventFlow.asSharedFlow()
 
-
-
-    init{
-        Log.i("TAG", "init: ")
-        getAllHabits()
-    }
-
-    private fun getAllHabits(){
+     fun getTodayTasks(){
         viewModelScope.launch {
             useCases.generateTodayTasks().collectLatest {
                 when(it) {
