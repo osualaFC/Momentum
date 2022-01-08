@@ -68,7 +68,7 @@ private fun ScreenContent(
             modifier = Modifier.padding(innerPadding)
         ) {
             HomeCard()
-            HomeDetails(taskState)
+            HomeDetails(taskState, navController)
         }
 
     }

@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.addhabit.components
+package com.fredosuala.momentum.presentation.home.addhabit.components
 
 import android.app.TimePickerDialog
 import androidx.compose.foundation.Image
@@ -20,8 +20,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
-import com.fredosuala.momentum.presentation.addhabit.AddHabitEvents
-import com.fredosuala.momentum.presentation.addhabit.AddHabitViewModel
+import com.fredosuala.momentum.presentation.home.addhabit.AddHabitEvents
+import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
 import com.fredosuala.momentum.presentation.ui.theme.SubGreen
 import java.util.*
 

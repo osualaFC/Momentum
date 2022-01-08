@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.addhabit
+package com.fredosuala.momentum.presentation.home.addhabit
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -8,13 +8,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.fredosuala.momentum.R
-import com.fredosuala.momentum.presentation.addhabit.components.Form
-import com.fredosuala.momentum.presentation.addhabit.components.HabitFrequency
-import com.fredosuala.momentum.presentation.addhabit.components.Notification
-import com.fredosuala.momentum.presentation.addhabit.components.Reminder
+import com.fredosuala.momentum.presentation.home.addhabit.components.Form
+import com.fredosuala.momentum.presentation.home.addhabit.components.HabitFrequency
+import com.fredosuala.momentum.presentation.home.addhabit.components.Notification
+import com.fredosuala.momentum.presentation.home.addhabit.components.Reminder
 import com.fredosuala.momentum.presentation.components.AppButton
 import com.fredosuala.momentum.presentation.components.Header
-import com.fredosuala.momentum.presentation.components.NavigationIcon
+import com.fredosuala.momentum.presentation.components.BackIcon
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -72,7 +72,7 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = { Text(text = "") },
-                navigationIcon = { NavigationIcon(navController) },
+                navigationIcon = { BackIcon(navController) },
                 elevation = 0.dp,
                 backgroundColor = MaterialTheme.colors.background
             )

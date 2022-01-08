@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.addhabit
+package com.fredosuala.momentum.presentation.home.addhabit
 
 sealed class AddHabitEvents {
     data class EnteredHabitName(val value: String): AddHabitEvents()

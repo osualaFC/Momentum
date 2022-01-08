@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.addhabit
+package com.fredosuala.momentum.presentation.home.addhabit
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

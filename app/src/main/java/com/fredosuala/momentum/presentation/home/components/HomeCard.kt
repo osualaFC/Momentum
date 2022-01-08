@@ -20,7 +20,6 @@ import com.fredosuala.momentum.presentation.home.HomeViewModel
 fun HomeCard() {
     Card(
         modifier = Modifier
-            .clickable {  }
             .padding(16.dp, 0.dp)
             .fillMaxWidth(),
         elevation = 4.dp,

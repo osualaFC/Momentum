@@ -16,12 +16,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavArgument
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavType
 import androidx.navigation.compose.*
-import com.fredosuala.momentum.presentation.addhabit.AddHabitScreen
+import androidx.navigation.navArgument
+import com.fredosuala.momentum.presentation.home.addhabit.AddHabitScreen
 import com.fredosuala.momentum.presentation.blog.BlogScreen
 import com.fredosuala.momentum.presentation.home.HomeScreen
+import com.fredosuala.momentum.presentation.home.habitdetails.HabitDetailScreen
 import com.fredosuala.momentum.presentation.profile.ProfileScreen
 import com.fredosuala.momentum.presentation.settings.SettingsScreen
 import com.fredosuala.momentum.presentation.ui.theme.MomentumAppTheme
@@ -34,7 +38,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MomentumAppTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     ScreenContent()
                 }
@@ -97,6 +100,12 @@ private fun ScreenContent() {
             navigation(startDestination = Constants.HOMESCREEN, route = Constants.HABITS) {
                 composable(Constants.HOMESCREEN) { HomeScreen(navController, bottomBarState) }
                 composable(Constants.ADDHABITSCREEN) { AddHabitScreen(navController, bottomBarState) }
+                composable(
+                    Constants.HABITDETAILSCREEN+ "/{habitId}",
+                    arguments = listOf(navArgument("habitId") {type = NavType.LongType})
+                ) { backStackEntry ->
+                    HabitDetailScreen(navController, backStackEntry.arguments?.getLong("habitId"), bottomBarState)
+                }
             }
             composable(Constants.BLOGSCREEN) { BlogScreen() }
             composable(Constants.PROFILESCREEN) { ProfileScreen() }
@@ -106,7 +115,7 @@ private fun ScreenContent() {
     }
 }
 
-private val bottomNavDestination = listOf<Screen>(Screen.Home, Screen.Blog, Screen.Profile, Screen.Settings)
+private val bottomNavDestination = listOf(Screen.Home, Screen.Blog, Screen.Profile, Screen.Settings)
 
 sealed class Screen(val route: String, val icons: ImageVector) {
     object Home : Screen(Constants.HABITS, Icons.Outlined.Home)

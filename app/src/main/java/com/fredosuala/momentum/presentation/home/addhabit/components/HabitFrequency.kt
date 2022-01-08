@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.addhabit.components
+package com.fredosuala.momentum.presentation.home.addhabit.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
-import com.fredosuala.momentum.presentation.addhabit.AddHabitViewModel
+import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
 import com.fredosuala.momentum.presentation.ui.theme.LightAltText
 import com.fredosuala.momentum.presentation.ui.theme.MainGreen
 

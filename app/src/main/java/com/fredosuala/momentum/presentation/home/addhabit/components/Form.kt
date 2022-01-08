@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.addhabit.components
+package com.fredosuala.momentum.presentation.home.addhabit.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
-import com.fredosuala.momentum.presentation.addhabit.AddHabitEvents
-import com.fredosuala.momentum.presentation.addhabit.AddHabitViewModel
+import com.fredosuala.momentum.presentation.home.addhabit.AddHabitEvents
+import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
 
 @Composable
 fun Form(habit: String, viewModel: AddHabitViewModel) {

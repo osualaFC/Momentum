@@ -1,5 +1,6 @@
 package com.fredosuala.momentum.presentation.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
@@ -17,11 +18,11 @@ import com.fredosuala.momentum.presentation.ui.theme.LightGreen
 import com.fredosuala.momentum.presentation.ui.theme.SubGreen
 
 @Composable
-fun NavigationIcon(navController: NavController) {
+fun BackIcon(navController: NavController, modifier: Modifier = Modifier) {
     Card(
         backgroundColor = LightGreen,
         shape = AbsoluteRoundedCornerShape(5.dp),
-        modifier = Modifier
+        modifier = modifier
             .clickable { navController.popBackStack() }
             .padding(16.dp, 0.dp, 0.dp, 0.dp)
     ) {

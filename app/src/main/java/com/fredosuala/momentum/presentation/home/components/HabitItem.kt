@@ -2,6 +2,7 @@ package com.fredosuala.momentum.presentation.home.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -12,15 +13,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.fredosuala.momentum.R
 import com.fredosuala.momentum.domain.model.TaskDomain
 import com.fredosuala.momentum.presentation.ui.theme.Flame
+import com.fredosuala.momentum.presentation.util.Constants
 
 @Composable
-fun HabitItem(task : TaskDomain) {
+fun HabitItem(task : TaskDomain, navController: NavController) {
     Card(
         backgroundColor = MaterialTheme.colors.primaryVariant,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth().clickable {
+            navController.navigate("${Constants.HABITDETAILSCREEN}/${task.habitId}")
+        }
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,

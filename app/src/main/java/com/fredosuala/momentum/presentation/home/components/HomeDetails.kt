@@ -11,11 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.fredosuala.momentum.R
 import com.fredosuala.momentum.presentation.home.TaskState
 
 @Composable
-fun HomeDetails(state : TaskState) {
+fun HomeDetails(state : TaskState, navController: NavController) {
     Box(modifier = Modifier
         .padding(16.dp, 16.dp, 16.dp, 0.dp)
         .fillMaxWidth()
@@ -56,7 +57,7 @@ fun HomeDetails(state : TaskState) {
                 }
                 LazyColumn {
                     items(state.tasks) { task ->
-                        HabitItem(task)
+                        HabitItem(task, navController)
                         Spacer(modifier = Modifier
                             .height(10.dp)
                             .fillMaxWidth())
