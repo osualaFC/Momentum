@@ -11,7 +11,7 @@ import java.util.*
 
 object CalenderUtil {
 
-    fun today() : Int {
+    private fun today() : Int {
         val dateTime = DateTime.now()
         return dateTime.dayOfWeek
     }

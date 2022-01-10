@@ -7,6 +7,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 
@@ -19,7 +20,8 @@ fun AppTopBar(
     endAction : () -> Unit
 ) {
     TopAppBar(
-        backgroundColor = MaterialTheme.colors.background
+        backgroundColor = MaterialTheme.colors.background,
+        elevation = 0.dp
     ) {
         ConstraintLayout(
             modifier = Modifier.fillMaxWidth()

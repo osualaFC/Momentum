@@ -18,4 +18,5 @@
     <string name="sun">Sun</string>
     <string name="reminder">Reminder</string>
     <string name="notification">Notification</string>
+    <string name="analytics">Analytics</string>
 </resources>

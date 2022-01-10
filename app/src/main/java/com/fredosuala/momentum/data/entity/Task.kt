@@ -3,6 +3,7 @@ package com.fredosuala.momentum.data.entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.fredosuala.momentum.domain.util.CalenderUtil
 
 @Entity(
         foreignKeys = [
@@ -19,6 +20,7 @@ data class Task(
         val id: Long = 0,
         val habitId: Long,
         var status: Status,
+        val date: String = CalenderUtil.getCurrentDateText()
         )
 
 enum class Status {
