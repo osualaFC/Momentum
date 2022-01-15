@@ -26,22 +26,21 @@ fun AppButton(
     val normalGradient =
         Brush.horizontalGradient(listOf(MainGreen, SubGreen))
     val lightGradient =
-        Brush.horizontalGradient(listOf(LIGHTGREEN, MainGreen))
+        Brush.horizontalGradient(listOf(LightGreen, MainGreen))
     Button(
         modifier = modifier,
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
         contentPadding = PaddingValues(),
         onClick = { onClick() },
         shape = RoundedCornerShape(10.dp),
-        //elevation = ButtonElevation.elevation(enabled =0.dp , interactionSource = null)
     ) {
         Box(
             modifier = Modifier
-                .background(if (normal) normalGradient else lightGradient)
+                .background(LightGreen)
                 .then(modifier),
             contentAlignment = Alignment.Center,
         ) {
-            Text(text = text)
+            Text(text = text, color = SubGreen)
         }
     }
 }

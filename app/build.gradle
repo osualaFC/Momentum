@@ -65,6 +65,7 @@ allprojects {
                     "-Xuse-experimental=kotlinx.coroutines.InternalCoroutinesApi",
                     "-Xuse-experimental=androidx.compose.animation.ExperimentalAnimationApi",
                     "-Xuse-experimental=androidx.compose.ExperimentalComposeApi",
+                    "-Xuse-experimental=androidx.compose.foundation.ExperimentalFoundationApi",
                     "-Xuse-experimental=androidx.compose.material.ExperimentalMaterialApi",
                     "-Xuse-experimental=androidx.compose.runtime.ExperimentalComposeApi",
                     "-Xuse-experimental=androidx.compose.ui.ExperimentalComposeUiApi",
@@ -125,6 +126,7 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$fragment_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation 'com.google.code.gson:gson:2.8.6'
+
 }
 
 kapt {

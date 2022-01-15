@@ -12,24 +12,25 @@ data class Habit(
     var frequency: List<String>,
     var reminder : String,
     var icon : Int,
+    var tracker : String? = null,
     var score: Int = 0,
     var cancelled: Boolean = false,
     var completed: Int = 0,
     var missed : Int = 0,
     var creationDate: Long = System.currentTimeMillis()
 ) {
-    fun toDomain() : HabitDomain {
-        return HabitDomain(
-            id = id,
-            name = name,
-            frequency = frequency,
-            creationDate = creationDate,
-            score = score,
-            cancelled = cancelled,
-            completed = completed,
-            missed = missed,
-            reminder = reminder,
-            icon = icon
-        )
-    }
+//    fun toDomain() : HabitDomain {
+//        return HabitDomain(
+//            id = id,
+//            name = name,
+//            frequency = frequency,
+//            creationDate = creationDate,
+//            score = score,
+//            cancelled = cancelled,
+//            completed = completed,
+//            missed = missed,
+//            reminder = reminder,
+//            icon = icon
+//        )
+//    }
 }

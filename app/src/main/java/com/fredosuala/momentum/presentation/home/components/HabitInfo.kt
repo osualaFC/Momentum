@@ -81,9 +81,6 @@ fun DetailSubCard(
     @DrawableRes icon : Int
 ) {
 
-    val dark = isSystemInDarkTheme()
-    val textColor = if(!dark) LightMainText else DarkAltText
-
     val streakText = if(label == "Completion Rate") "$streak%"
                     else if(streak > 1) "$streak days" else "$streak day"
 
@@ -92,7 +89,7 @@ fun DetailSubCard(
             .padding(10.dp),
         elevation = 0.dp,
         shape = RoundedCornerShape(20.dp),
-        backgroundColor = if(dark) LightGreen else MainGreen
+        backgroundColor = MaterialTheme.colors.primaryVariant
     ) {
         Row(
             modifier = Modifier.padding(20.dp),
@@ -105,14 +102,14 @@ fun DetailSubCard(
                 Text(
                     text = streakText,
                     style = MaterialTheme.typography.body2,
-                    color = textColor,
+                    color = MaterialTheme.colors.onSurface,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
                     text = label,
                     style = MaterialTheme.typography.body2,
-                    color = textColor,
+                    color = MaterialTheme.colors.onSurface,
                     fontSize = 12.sp
                 )
             }

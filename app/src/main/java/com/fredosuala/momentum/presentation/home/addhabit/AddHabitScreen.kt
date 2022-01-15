@@ -1,6 +1,7 @@
 package com.fredosuala.momentum.presentation.home.addhabit
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -84,28 +85,30 @@ private fun ScreenContent(
                 .padding(innerPadding)
                 .fillMaxHeight()
         ) {
-            Column(
+            LazyColumn(
                 modifier = Modifier
                     .padding(16.dp, 0.dp)
                     .fillMaxHeight()
             ) {
-                Header(R.string.new_habit)
-                Spacer(modifier = Modifier.height(15.dp))
-                Form(habitName, viewModel)
-                Spacer(modifier = Modifier.height(20.dp))
-                HabitFrequency(viewModel)
-                Spacer(modifier = Modifier.height(20.dp))
-                Reminder(reminder, viewModel)
-                Spacer(modifier = Modifier.height(20.dp))
-                Notification(enableNotf, viewModel)
-                Spacer(modifier = Modifier.height(100.dp))
-                AppButton(
-                    modifier = Modifier
-                        .padding(0.dp, 20.dp)
-                        .fillMaxWidth(),
-                    text = "Start this habit",
-                    onClick = { viewModel.addHabit()}
-                )
+                item {
+                    Header(R.string.new_habit)
+                    Spacer(modifier = Modifier.height(15.dp))
+                    Form(habitName, viewModel)
+                    Spacer(modifier = Modifier.height(20.dp))
+                    HabitFrequency(viewModel)
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Reminder(reminder, viewModel)
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Notification(enableNotf, viewModel)
+                    Spacer(modifier = Modifier.height(100.dp))
+                    AppButton(
+                        modifier = Modifier
+                            .padding(0.dp, 20.dp)
+                            .fillMaxWidth(),
+                        text = "Start this habit",
+                        onClick = { viewModel.addHabit()}
+                    )
+                }
             }
         }
     }

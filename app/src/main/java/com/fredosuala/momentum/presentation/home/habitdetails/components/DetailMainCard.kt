@@ -32,7 +32,6 @@ fun DetailMainCard(state: HabitDetailState) {
     val repeat = if(freq == 7) "Everyday" else if(freq == 1) "Once a week" else "$freq times a week"
     val dark = isSystemInDarkTheme()
     val tint = if(!dark) LightGreen else MainGreen
-    val textColor = if(!dark) LightMainText else DarkAltText
 
     Card(
         modifier = Modifier
@@ -40,11 +39,12 @@ fun DetailMainCard(state: HabitDetailState) {
             .fillMaxWidth(),
         elevation = 0.dp,
         shape = RoundedCornerShape(20.dp),
-        backgroundColor = if(dark) LightGreen else MainGreen
     ) {
         Row(
             modifier = Modifier
-                .padding(20.dp, 20.dp)
+                .padding(20.dp, 20.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             state.habit?.icon?.let { painterResource(it) }?.let { Image(
                 painter = it,
@@ -76,7 +76,7 @@ fun DetailMainCard(state: HabitDetailState) {
                     state.habit?.name?.let { Text(
                         text = it,
                         style = MaterialTheme.typography.body2,
-                        color = textColor,
+                        color = MaterialTheme.colors.onSurface,
                     ) }
                 }
                 Row(
@@ -98,7 +98,7 @@ fun DetailMainCard(state: HabitDetailState) {
                     Text(
                         text = repeat,
                         style = MaterialTheme.typography.body2,
-                        color = textColor
+                        color = MaterialTheme.colors.onSurface
                     )
                 }
                 Row(
@@ -121,7 +121,7 @@ fun DetailMainCard(state: HabitDetailState) {
                         Text(
                             text = it,
                             style = MaterialTheme.typography.body2,
-                            color = textColor
+                            color = MaterialTheme.colors.onSurface
                         )
                     }
                 }
