@@ -8,12 +8,9 @@ import com.fredosuala.momentum.domain.usecases.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
-import com.fredosuala.momentum.data.entity.Status
 import com.fredosuala.momentum.domain.util.CalenderUtil
 import com.google.gson.Gson
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -30,6 +27,9 @@ class HabitDetailViewModel @Inject constructor(
     private val _state = mutableStateOf(HabitDetailState())
     val state : State<HabitDetailState> = _state
 
+    private val _showDialog = MutableStateFlow(false)
+    val showDialog: StateFlow<Boolean> = _showDialog.asStateFlow()
+
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
@@ -38,6 +38,19 @@ class HabitDetailViewModel @Inject constructor(
             is HabitDetailEvents.SetAsComplete -> completeTask()
             is HabitDetailEvents.SetAsMissed -> missedTask()
         }
+    }
+
+    fun onOpenDialogClicked() {
+        _showDialog.value = true
+    }
+
+    fun onDialogConfirm() {
+        _showDialog.value = false
+        deleteHabit()
+    }
+
+    fun onDialogDismiss() {
+        _showDialog.value = false
     }
 
     fun getHabit() {
@@ -51,6 +64,20 @@ class HabitDetailViewModel @Inject constructor(
                 _eventFlow.emit(
                     UiEvent.ShowSnackBar(
                         message = "Something went wrong, why fetching info for this habit"
+                    )
+                )
+            }
+        }
+    }
+
+    private fun deleteHabit() {
+        viewModelScope.launch {
+            try {
+                _state.value.habit?.let { useCases.deleteHabit(it) }
+            }catch (e : Exception) {
+                _eventFlow.emit(
+                    UiEvent.ShowSnackBar(
+                        message = "Something went wrong, why deleting this habit"
                     )
                 )
             }

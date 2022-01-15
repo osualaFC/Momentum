@@ -54,7 +54,9 @@ fun AppTopBar(
                     bottom.linkTo(parent.bottom)
                     end.linkTo(parent.end)
                 }
-            ) {}
+            ) {
+                endAction()
+            }
         }
     }
 }

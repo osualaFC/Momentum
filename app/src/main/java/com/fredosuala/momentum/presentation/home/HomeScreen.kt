@@ -38,9 +38,11 @@ private fun ScreenContent(
     bottomBarState : MutableState<Boolean>) {
 
     bottomBarState.value = true
+
     LaunchedEffect(key1 = true)  {
        viewModel.getTodayTasks()
     }
+
     Scaffold(
         topBar = {
             TopAppBar(

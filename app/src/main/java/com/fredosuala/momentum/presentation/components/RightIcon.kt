@@ -21,7 +21,7 @@ fun RightIcon(@DrawableRes icon : Int, contentDes : String,  modifier: Modifier 
         backgroundColor = LightGreen,
         shape = AbsoluteRoundedCornerShape(5.dp),
         modifier = modifier
-            .clickable { onClick }
+            .clickable { onClick() }
             .padding(16.dp, 0.dp, 0.dp, 0.dp)
     ) {
         Image(

@@ -27,14 +27,17 @@ import com.fredosuala.momentum.presentation.ui.theme.*
 
 @Composable
 fun HabitInfo(state: HabitDetailState) {
-
+    val streak = state.habit?.score ?: 0
+    val completed = state.habit?.completed ?: 0
+    val rate = if(completed != 0 && streak != 0) (completed / streak) * 100 else 0
+    val missed = state.habit?.missed ?: 0
     Column() {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             DetailSubCard(
-                streak = 20,
+                streak = streak,
                 label = "Longest Streak",
                 cardColor = Flame,
                 iconColor = LIGHTRED,
@@ -42,7 +45,7 @@ fun HabitInfo(state: HabitDetailState) {
             )
 
             DetailSubCard(
-                streak = 15,
+                streak = completed,
                 label = "Completed",
                 cardColor = BLUE,
                 iconColor = LIGHTBLUE,
@@ -54,7 +57,7 @@ fun HabitInfo(state: HabitDetailState) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             DetailSubCard(
-                streak = 80,
+                streak = rate,
                 label = "Completion Rate",
                 cardColor = INDIGO,
                 iconColor = LIGHTINDIGO,
@@ -62,7 +65,7 @@ fun HabitInfo(state: HabitDetailState) {
             )
 
             DetailSubCard(
-                streak = 5,
+                streak = missed,
                 label = "Missed",
                 cardColor = VIOLET,
                 iconColor = LIGHTVIOLET,

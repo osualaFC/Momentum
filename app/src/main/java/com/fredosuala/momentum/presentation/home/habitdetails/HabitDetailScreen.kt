@@ -1,14 +1,15 @@
 package com.fredosuala.momentum.presentation.home.habitdetails
 
+import android.util.Log
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
+import androidx.compose.material.SnackbarDefaults.backgroundColor
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -17,6 +18,10 @@ import com.fredosuala.momentum.R
 import com.fredosuala.momentum.presentation.components.AppButton
 import com.fredosuala.momentum.presentation.home.components.HabitInfo
 import com.fredosuala.momentum.presentation.home.habitdetails.components.DetailMainCard
+import com.fredosuala.momentum.presentation.ui.theme.Flame
+import com.fredosuala.momentum.presentation.ui.theme.LIGHTRED
+import com.fredosuala.momentum.presentation.ui.theme.LightGreen
+import com.fredosuala.momentum.presentation.ui.theme.SubGreen
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -24,7 +29,8 @@ fun HabitDetailScreen(navController: NavController, habitId: Long?, bottomBarSta
     val scaffoldState = rememberScaffoldState()
     val viewModel : HabitDetailViewModel = hiltViewModel()
     val state = viewModel.state.value
-    ScreenContent(scaffoldState, navController, state, viewModel, habitId, bottomBarState)
+    val showDialogState: Boolean by viewModel.showDialog.collectAsState()
+    ScreenContent(scaffoldState, navController, state, viewModel, habitId, bottomBarState, showDialogState)
 }
 
 @Composable
@@ -34,11 +40,11 @@ private fun ScreenContent(
     state: HabitDetailState,
     viewModel: HabitDetailViewModel,
     habitId: Long?,
-    bottomBarState: MutableState<Boolean>
+    bottomBarState: MutableState<Boolean>,
+    showDialogState : Boolean
 ) {
     
     bottomBarState.value = false
-
 
     LaunchedEffect(key1 = true)  {
         viewModel.habitId = habitId!!
@@ -60,9 +66,11 @@ private fun ScreenContent(
                 AppTopBar(
                     navController = navController,
                     title = it,
-                    endIcon = R.drawable.ic_edit,
+                    endIcon = R.drawable.ic_delete,
                     endContentDes = "edit habit"
-                ) {}
+                ) {
+                    viewModel.onOpenDialogClicked()
+                }
             }
         },
         scaffoldState = scaffoldState
@@ -99,6 +107,42 @@ private fun ScreenContent(
                     }
                 }
 
+            }
+            
+            if(showDialogState) {
+                AlertDialog(
+                    onDismissRequest = { viewModel.onDialogDismiss()},
+                    title = { Text(text = "Delete this Habit") },
+                    text = { Text(
+                        text = "Are you sure you want to delete this? This action is irreversible"
+                    ) },
+                    confirmButton = {
+                        Button(onClick = {
+                           viewModel.onDialogConfirm()
+                            navController.popBackStack()
+                        },
+                            colors = ButtonDefaults.buttonColors(
+                                backgroundColor = LightGreen,
+                                contentColor = SubGreen
+                            )
+                        ) {
+                            Text(text = "Yes")
+                        }
+                    },
+
+                    dismissButton = {
+                        Button(onClick = {
+                            viewModel.onDialogDismiss()
+                        },
+                            colors = ButtonDefaults.buttonColors(
+                                backgroundColor = LIGHTRED,
+                                contentColor = Flame
+                            )
+                        ) {
+                            Text(text = "Cancel")
+                        }
+                    }
+                )
             }
         }
     }

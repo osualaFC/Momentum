@@ -1,5 +1,6 @@
 package com.fredosuala.momentum.presentation.home
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -42,5 +43,15 @@ class HomeViewModel@Inject constructor(
             }
         }
     }
+
+//    fun getAllHabits() {
+//        viewModelScope.launch {
+//            try {
+//                useCases.
+//            } catch (e: Exception) {
+//                Log.i("TAG", "getAllHabits: ${e.localizedMessage}")
+//            }
+//        }
+//    }
 
 }
