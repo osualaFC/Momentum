@@ -1,7 +1,9 @@
 package com.fredosuala.momentum.presentation.home.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -18,7 +20,6 @@ import com.fredosuala.momentum.presentation.home.TaskState
 @Composable
 fun HomeDetails(state : TaskState, navController: NavController) {
     Box(modifier = Modifier
-        .padding(16.dp, 16.dp, 16.dp, 0.dp)
         .fillMaxWidth()
     ) {
         Column() {
@@ -55,15 +56,12 @@ fun HomeDetails(state : TaskState, navController: NavController) {
                         color = MaterialTheme.colors.onSurface
                     )
                 }
-                LazyColumn {
+                LazyVerticalGrid(cells = GridCells.Fixed(2),
+                    modifier = Modifier.fillMaxWidth()) {
                     items(state.tasks) { task ->
                         HabitItem(task, navController)
-                        Spacer(modifier = Modifier
-                            .height(10.dp)
-                            .fillMaxWidth())
                     }
                 }
-
             }
         }
     }

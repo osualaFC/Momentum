@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavArgument
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -60,7 +61,8 @@ private fun ScreenContent() {
                 exit = slideOutVertically(targetOffsetY = { it }),
                 content = {
                     BottomNavigation(
-                        backgroundColor = MaterialTheme.colors.primaryVariant,
+                        backgroundColor = MaterialTheme.colors.background,
+                        elevation = 0.dp
                     ) {
                         val navBackStackEntry by navController.currentBackStackEntryAsState()
                         val currentDestination = navBackStackEntry?.destination

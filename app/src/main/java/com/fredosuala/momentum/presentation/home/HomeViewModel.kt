@@ -20,7 +20,6 @@ class HomeViewModel@Inject constructor(
     private val _state = mutableStateOf(TaskState())
     val state : State<TaskState> = _state
 
-
      fun getTodayTasks(){
         viewModelScope.launch {
             useCases.generateTodayTasks().collectLatest {
@@ -43,15 +42,4 @@ class HomeViewModel@Inject constructor(
             }
         }
     }
-
-//    fun getAllHabits() {
-//        viewModelScope.launch {
-//            try {
-//                useCases.
-//            } catch (e: Exception) {
-//                Log.i("TAG", "getAllHabits: ${e.localizedMessage}")
-//            }
-//        }
-//    }
-
 }

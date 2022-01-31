@@ -56,20 +56,21 @@ private fun ScreenContent(
                 onClick = {
                     navController.navigate(Constants.ADDHABITSCREEN)
                 },
-                shape = RoundedCornerShape(90),
-                backgroundColor = LightGreen,
+                shape = RoundedCornerShape(20),
+                backgroundColor = MaterialTheme.colors.secondary,
                 modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 5.dp)
             ) {
-                Icon(Icons.Filled.Add, tint = SubGreen, contentDescription = "Add")
+                Icon(Icons.Filled.Add, tint = MaterialTheme.colors.background, contentDescription = "Add")
             }
         },
         floatingActionButtonPosition = FabPosition.End,
         scaffoldState = scaffoldState
-    ) { innerPadding ->
+    ) {
         Column(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(30.dp, 0.dp, 10.dp, 0.dp)
         ) {
             HomeCard()
+            Spacer(modifier = Modifier.height(15.dp))
             HomeDetails(taskState, navController)
         }
 
