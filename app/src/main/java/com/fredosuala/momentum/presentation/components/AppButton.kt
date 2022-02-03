@@ -4,10 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.ButtonElevation
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,11 +33,11 @@ fun AppButton(
     ) {
         Box(
             modifier = Modifier
-                .background(LightGreen)
+                .background(MaterialTheme.colors.secondary)
                 .then(modifier),
             contentAlignment = Alignment.Center,
         ) {
-            Text(text = text, color = SubGreen)
+            Text(text = text, color = MaterialTheme.colors.background)
         }
     }
 }

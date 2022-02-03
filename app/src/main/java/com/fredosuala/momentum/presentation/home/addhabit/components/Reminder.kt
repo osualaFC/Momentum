@@ -22,7 +22,10 @@ import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
 import com.fredosuala.momentum.presentation.home.addhabit.AddHabitEvents
 import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
+import com.fredosuala.momentum.presentation.ui.theme.BgDark
+import com.fredosuala.momentum.presentation.ui.theme.MainTextLight
 import com.fredosuala.momentum.presentation.ui.theme.SubGreen
+import com.fredosuala.momentum.presentation.ui.theme.SubTextDark
 import java.util.*
 
 
@@ -31,7 +34,7 @@ fun Reminder(reminder : String?, viewModel: AddHabitViewModel) {
 
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = AbsoluteRoundedCornerShape(5.dp),
+        shape = AbsoluteRoundedCornerShape(10.dp),
         backgroundColor = MaterialTheme.colors.primaryVariant,
         elevation = 0.dp
     ) {
@@ -58,7 +61,7 @@ fun Reminder(reminder : String?, viewModel: AddHabitViewModel) {
             Text(
                 text = stringResource(id = R.string.reminder),
                 style = MaterialTheme.typography.body1,
-                color = MaterialTheme.colors.onSurface
+                color = SubTextDark
             )
             Row(
                 modifier = Modifier.clickable {
@@ -69,13 +72,13 @@ fun Reminder(reminder : String?, viewModel: AddHabitViewModel) {
                 Text(
                     text = reminder ?: "",
                     style = MaterialTheme.typography.body1,
-                    color = MaterialTheme.colors.onSurface
+                    color = MainTextLight
                 )
                 Image(
                     modifier = Modifier.padding(5.dp),
                     painter = painterResource(id = R.drawable.ic_arrow_forward),
                     contentDescription = "Open Time Picker",
-                    colorFilter = ColorFilter.tint(SubGreen),
+                    colorFilter = ColorFilter.tint(BgDark),
                     alignment = Alignment.Center
                 )
             }

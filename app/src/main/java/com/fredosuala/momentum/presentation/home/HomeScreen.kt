@@ -8,15 +8,19 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.fredosuala.momentum.presentation.home.addhabit.AddUpdateHabit
 import com.fredosuala.momentum.presentation.home.components.HomeCard
 import com.fredosuala.momentum.presentation.home.components.HomeDetails
 import com.fredosuala.momentum.presentation.ui.theme.LightGreen
 import com.fredosuala.momentum.presentation.ui.theme.SubGreen
 import com.fredosuala.momentum.presentation.util.Constants
+import kotlinx.coroutines.launch
 
 @Composable
 fun HomeScreen(
@@ -37,42 +41,65 @@ private fun ScreenContent(
     viewModel: HomeViewModel,
     bottomBarState : MutableState<Boolean>) {
 
-    bottomBarState.value = true
-
     LaunchedEffect(key1 = true)  {
        viewModel.getTodayTasks()
     }
+    val bottomState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden,
+        confirmStateChange = { it != ModalBottomSheetValue.HalfExpanded }
+    )
+    val coroutineScope = rememberCoroutineScope()
+    bottomBarState.value = bottomState.currentValue == ModalBottomSheetValue.Hidden
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "") },
-                elevation = 0.dp,
-                backgroundColor = MaterialTheme.colors.background
-            )
-        },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    navController.navigate(Constants.ADDHABITSCREEN)
-                },
-                shape = RoundedCornerShape(20),
-                backgroundColor = MaterialTheme.colors.secondary,
-                modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 5.dp)
-            ) {
-                Icon(Icons.Filled.Add, tint = MaterialTheme.colors.background, contentDescription = "Add")
+
+    ModalBottomSheetLayout(
+        sheetState = bottomState,
+        sheetContent = {
+            Box(Modifier.defaultMinSize(minHeight = 1.dp)) {
+                AddUpdateHabit(navController, bottomState)
             }
         },
-        floatingActionButtonPosition = FabPosition.End,
-        scaffoldState = scaffoldState
+        sheetBackgroundColor = MaterialTheme.colors.secondary,
+        sheetElevation = 16.dp,
+        sheetShape = RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp),
+        scrimColor = Color.Transparent
     ) {
-        Column(
-            modifier = Modifier.padding(30.dp, 0.dp, 10.dp, 0.dp)
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "") },
+                    elevation = 0.dp,
+                    backgroundColor = MaterialTheme.colors.background
+                )
+            },
+            floatingActionButton = {
+                FloatingActionButton(
+                    onClick = {
+                        coroutineScope.launch {
+                            bottomState.animateTo(ModalBottomSheetValue.HalfExpanded)
+                        }
+                    },
+                    shape = RoundedCornerShape(20),
+                    backgroundColor = MaterialTheme.colors.secondary,
+                    modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 5.dp)
+                ) {
+                    Icon(
+                        Icons.Filled.Add,
+                        tint = MaterialTheme.colors.background,
+                        contentDescription = "Add"
+                    )
+                }
+            },
+            floatingActionButtonPosition = FabPosition.End,
+            scaffoldState = scaffoldState
         ) {
-            HomeCard()
-            Spacer(modifier = Modifier.height(15.dp))
-            HomeDetails(taskState, navController)
+            Column(
+                modifier = Modifier.padding(30.dp, 0.dp, 10.dp, 0.dp)
+            ) {
+                HomeCard()
+                Spacer(modifier = Modifier.height(15.dp))
+                HomeDetails(taskState, navController)
+            }
         }
-
     }
 }

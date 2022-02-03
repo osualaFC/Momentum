@@ -1,6 +1,5 @@
 package com.fredosuala.momentum.presentation.home.addhabit
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -101,7 +100,6 @@ class AddHabitViewModel @Inject constructor(
     private fun isFreqValid(list : List<String>): Boolean{
         return !list.isNullOrEmpty()
     }
-
 }
 
 sealed class UiEvent {

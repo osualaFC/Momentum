@@ -19,7 +19,7 @@ import com.fredosuala.momentum.presentation.home.addhabit.AddHabitEvents
 import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
 
 @Composable
-fun Notification(enableNotf: Boolean?, viewModel: AddHabitViewModel) {
+fun Notification(enableNotf: Boolean?, viewModel: AddHabitViewModel? = null) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = AbsoluteRoundedCornerShape(5.dp),
@@ -43,7 +43,7 @@ fun Notification(enableNotf: Boolean?, viewModel: AddHabitViewModel) {
             ) {
                 Switch(
                     checked = enableNotf ?: true,
-                    onCheckedChange = { viewModel.onEvent(AddHabitEvents.SelectNotification(it))}
+                    onCheckedChange = { viewModel?.onEvent(AddHabitEvents.SelectNotification(it))}
                 )
             }
         }

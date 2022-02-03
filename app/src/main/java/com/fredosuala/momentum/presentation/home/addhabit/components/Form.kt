@@ -17,6 +17,9 @@ import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
 import com.fredosuala.momentum.presentation.home.addhabit.AddHabitEvents
 import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
+import com.fredosuala.momentum.presentation.ui.theme.BgDark
+import com.fredosuala.momentum.presentation.ui.theme.MainTextLight
+import com.fredosuala.momentum.presentation.ui.theme.SubTextDark
 
 @Composable
 fun Form(habit: String, viewModel: AddHabitViewModel) {
@@ -28,16 +31,16 @@ fun Form(habit: String, viewModel: AddHabitViewModel) {
             modifier = Modifier.fillMaxWidth(),
             value = habit,
             onValueChange = { viewModel.onEvent(AddHabitEvents.EnteredHabitName(it)) },
-            placeholder = { Text(text = stringResource(id = R.string.enter_habit_name)) },
+            placeholder = { Text(text = stringResource(id = R.string.enter_habit_name), color = SubTextDark) },
             shape = AbsoluteRoundedCornerShape(10.dp),
             keyboardOptions = KeyboardOptions.Default,
             keyboardActions = KeyboardActions.Default,
             colors = TextFieldDefaults.textFieldColors(
-                focusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = BgDark,
                 disabledIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 backgroundColor = MaterialTheme.colors.primaryVariant,
-                textColor = MaterialTheme.colors.onSurface
+                textColor = BgDark
             )
         )
     }

@@ -21,13 +21,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
 import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
-import com.fredosuala.momentum.presentation.ui.theme.LightAltText
-import com.fredosuala.momentum.presentation.ui.theme.MainGreen
+import com.fredosuala.momentum.presentation.ui.theme.*
 import com.google.gson.Gson
 
 @Composable
 fun HabitFrequency(viewModel: AddHabitViewModel) {
-    Log.i("TAG", "HabitFrequency: ${viewModel.freq.value.size}")
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = AbsoluteRoundedCornerShape(5.dp),
@@ -50,7 +48,7 @@ fun HabitFrequency(viewModel: AddHabitViewModel) {
                     Text(
                         text = stringResource(id = R.string.frequency),
                         style = MaterialTheme.typography.body1,
-                        color = MaterialTheme.colors.onSurface
+                        color = SubTextDark
                     )
                     AnimatedVisibility(
                         visible = viewModel.freq.value.size == 7
@@ -58,7 +56,7 @@ fun HabitFrequency(viewModel: AddHabitViewModel) {
                         Text(
                             text = stringResource(id = R.string.everyday),
                             style = MaterialTheme.typography.body2,
-                            color = MaterialTheme.colors.onSecondary
+                            color = SubTextDark
                         )
                     }
                 }
@@ -105,7 +103,7 @@ fun DayItem(viewModel: AddHabitViewModel) {
                             if (selected.value) viewModel.addFreq(list[index])
                             else viewModel.removeFreq(list[index])
                         }) ,
-                    backgroundColor = if (selected.value) MainGreen else LightAltText,
+                    backgroundColor = if (selected.value) BgDark else BgLight,
                     content = {}
                 )
             }

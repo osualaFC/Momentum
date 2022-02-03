@@ -17,13 +17,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavArgument
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
-import com.fredosuala.momentum.presentation.home.addhabit.AddHabitScreen
 import com.fredosuala.momentum.presentation.blog.BlogScreen
 import com.fredosuala.momentum.presentation.home.HomeScreen
 import com.fredosuala.momentum.presentation.home.habitdetails.HabitDetailScreen
@@ -101,7 +99,6 @@ private fun ScreenContent() {
         ) {
             navigation(startDestination = Constants.HOMESCREEN, route = Constants.HABITS) {
                 composable(Constants.HOMESCREEN) { HomeScreen(navController, bottomBarState) }
-                composable(Constants.ADDHABITSCREEN) { AddHabitScreen(navController, bottomBarState) }
                 composable(
                     Constants.HABITDETAILSCREEN+ "/{habitId}",
                     arguments = listOf(navArgument("habitId") {type = NavType.LongType})
