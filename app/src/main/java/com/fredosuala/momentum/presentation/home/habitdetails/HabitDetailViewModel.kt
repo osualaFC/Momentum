@@ -8,6 +8,7 @@ import com.fredosuala.momentum.domain.usecases.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
+import com.fredosuala.momentum.data.entity.Habit
 import com.fredosuala.momentum.domain.util.CalenderUtil
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.*
@@ -22,6 +23,7 @@ class HabitDetailViewModel @Inject constructor(
         const val TAG = "HabitDetailViewModel"
     }
     var habitId : Long = -1
+    var habit : Habit? = null
     private val today = CalenderUtil.getCurrentDateText()
 
     private val _state = mutableStateOf(HabitDetailState())
@@ -56,8 +58,8 @@ class HabitDetailViewModel @Inject constructor(
     fun getHabit() {
         viewModelScope.launch {
             try {
-              val habit =  useCases.getHabit(habitId)
-                habit.collectLatest {
+                useCases.getHabit(habitId).collectLatest {
+                    habit = it
                     _state.value = state.value.copy(habit = it, isLoading = false)
                 }
             } catch (e : Exception) {

@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.home
+package com.fredosuala.momentum.presentation.home.dashboard
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,12 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.fredosuala.momentum.presentation.home.addhabit.AddUpdateHabit
+import com.fredosuala.momentum.presentation.home.addupdatehabit.AddUpdateHabitScreen
 import com.fredosuala.momentum.presentation.home.components.HomeCard
 import com.fredosuala.momentum.presentation.home.components.HomeDetails
-import com.fredosuala.momentum.presentation.ui.theme.LightGreen
-import com.fredosuala.momentum.presentation.ui.theme.SubGreen
-import com.fredosuala.momentum.presentation.util.Constants
 import kotlinx.coroutines.launch
 
 @Composable
@@ -56,7 +53,7 @@ private fun ScreenContent(
         sheetState = bottomState,
         sheetContent = {
             Box(Modifier.defaultMinSize(minHeight = 1.dp)) {
-                AddUpdateHabit(navController, bottomState)
+                AddUpdateHabitScreen(bottomState)
             }
         },
         sheetBackgroundColor = MaterialTheme.colors.secondary,

@@ -1,11 +1,7 @@
-package com.fredosuala.momentum.presentation.home.addhabit.components
+package com.fredosuala.momentum.presentation.home.addupdatehabit.components
 
-import android.util.Log
-import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.selection.selectable
@@ -13,16 +9,14 @@ import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
-import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
+import com.fredosuala.momentum.presentation.home.addupdatehabit.AddHabitViewModel
 import com.fredosuala.momentum.presentation.ui.theme.*
-import com.google.gson.Gson
 
 @Composable
 fun HabitFrequency(viewModel: AddHabitViewModel) {
@@ -50,15 +44,15 @@ fun HabitFrequency(viewModel: AddHabitViewModel) {
                         style = MaterialTheme.typography.body1,
                         color = SubTextDark
                     )
-                    AnimatedVisibility(
-                        visible = viewModel.freq.value.size == 7
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.everyday),
-                            style = MaterialTheme.typography.body2,
-                            color = SubTextDark
-                        )
-                    }
+//                    AnimatedVisibility(
+//                        visible = viewModel.state.value.freq.size == 7
+//                    ) {
+//                        Text(
+//                            text = stringResource(id = R.string.everyday),
+//                            style = MaterialTheme.typography.body2,
+//                            color = SubTextDark
+//                        )
+//                    }
                 }
             }
             Divider(
@@ -88,7 +82,7 @@ fun DayItem(viewModel: AddHabitViewModel) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val selected = rememberSaveable { mutableStateOf(true) }
+                val selected = rememberSaveable { mutableStateOf(false) }
                 Text(
                     text = stringResource(id = item),
                     style = MaterialTheme.typography.body1,

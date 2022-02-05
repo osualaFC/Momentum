@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.home.addhabit.components
+package com.fredosuala.momentum.presentation.home.addupdatehabit.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fredosuala.momentum.R
-import com.fredosuala.momentum.presentation.home.addhabit.AddHabitEvents
-import com.fredosuala.momentum.presentation.home.addhabit.AddHabitViewModel
+import com.fredosuala.momentum.presentation.home.addupdatehabit.AddHabitEvents
+import com.fredosuala.momentum.presentation.home.addupdatehabit.AddHabitViewModel
 
 @Composable
 fun Notification(enableNotf: Boolean?, viewModel: AddHabitViewModel? = null) {

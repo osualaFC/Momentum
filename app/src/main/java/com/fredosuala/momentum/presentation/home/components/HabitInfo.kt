@@ -26,12 +26,14 @@ import com.fredosuala.momentum.presentation.ui.theme.*
 
 
 @Composable
-fun HabitInfo(state: HabitDetailState) {
+fun HabitInfo(state: HabitDetailState, modifier: Modifier) {
     val streak = state.habit?.score ?: 0
     val completed = state.habit?.completed ?: 0
     val rate = if(completed != 0 && streak != 0) (completed / streak) * 100 else 0
     val missed = state.habit?.missed ?: 0
-    Column() {
+    Column(
+        modifier = modifier
+    ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically

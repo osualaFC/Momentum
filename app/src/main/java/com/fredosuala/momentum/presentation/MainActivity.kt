@@ -23,7 +23,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
 import com.fredosuala.momentum.presentation.blog.BlogScreen
-import com.fredosuala.momentum.presentation.home.HomeScreen
+import com.fredosuala.momentum.presentation.home.dashboard.HomeScreen
 import com.fredosuala.momentum.presentation.home.habitdetails.HabitDetailScreen
 import com.fredosuala.momentum.presentation.profile.ProfileScreen
 import com.fredosuala.momentum.presentation.settings.SettingsScreen

@@ -2,7 +2,6 @@ package com.fredosuala.momentum.presentation.home.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
@@ -15,7 +14,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.fredosuala.momentum.R
-import com.fredosuala.momentum.presentation.home.TaskState
+import com.fredosuala.momentum.presentation.home.dashboard.TaskState
 
 @Composable
 fun HomeDetails(state : TaskState, navController: NavController) {

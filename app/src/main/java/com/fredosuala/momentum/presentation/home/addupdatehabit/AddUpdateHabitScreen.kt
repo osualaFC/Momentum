@@ -1,5 +1,6 @@
-package com.fredosuala.momentum.presentation.home.addhabit
+package com.fredosuala.momentum.presentation.home.addupdatehabit
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,23 +14,22 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import com.fredosuala.momentum.presentation.home.addhabit.components.Form
-import com.fredosuala.momentum.presentation.home.addhabit.components.HabitFrequency
-import com.fredosuala.momentum.presentation.home.addhabit.components.Reminder
+import com.fredosuala.momentum.data.entity.Habit
+import com.fredosuala.momentum.presentation.home.addupdatehabit.components.Form
+import com.fredosuala.momentum.presentation.home.addupdatehabit.components.HabitFrequency
+import com.fredosuala.momentum.presentation.home.addupdatehabit.components.Reminder
+import com.google.gson.Gson
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
-fun AddUpdateHabit(
-    navController: NavController,
+fun AddUpdateHabitScreen(
     bottomSheetState: ModalBottomSheetState,
+    habit: Habit? = null,
     viewModel : AddHabitViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
-    val habitName = viewModel.habitName.value
-    val reminder  = viewModel.reminder.value
 
     LaunchedEffect(key1 = true)  {
         viewModel.eventFlow.collectLatest {  event ->
@@ -45,6 +45,10 @@ fun AddUpdateHabit(
             }
         }
     }
+
+    viewModel.state.value.habit = habit
+    val habitName = viewModel.state.value.habit?.name ?: viewModel.state.value.habitName
+    val reminder  = viewModel.state.value.habit?.reminder ?: viewModel.state.value.reminder
 
     Card(
         backgroundColor = MaterialTheme.colors.secondary,
@@ -70,7 +74,7 @@ fun AddUpdateHabit(
                 HabitFrequency(viewModel)
                 Spacer(modifier = Modifier.height(5.dp))
                Button(
-                   onClick = {viewModel.addHabit()},
+                   onClick = {viewModel.addUpdateHabit()},
                    elevation = null,
                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
                    modifier = Modifier

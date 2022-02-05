@@ -1,4 +1,4 @@
-package com.fredosuala.momentum.presentation.home
+package com.fredosuala.momentum.presentation.home.dashboard
 
 import com.fredosuala.momentum.domain.model.TaskDomain
 import com.fredosuala.momentum.domain.util.CalenderUtil
